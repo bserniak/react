@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
 import { SearchBar } from './searchBar';
 import { DelegateTable } from './delegateTable';
+import { GetDelegates } from './services';
 
 export class SearchableDelegateTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            empId: 0,
+            empId: 100,
             delegates: []
         }
         this.handleTextInput = this.handleTextInput.bind(this);
+        this.setDelegates = this.setDelegates.bind(this);
         this.getDelegatesFromApi = this.getDelegatesFromApi.bind(this);
     }
 
     getDelegatesFromApi(empId) {
-        var matchingDelegates = [];
+        return GetDelegates(empId).then(peeps => {
+            this.setDelegates(peeps);
+        });
+    }
 
-        delegateInfo.forEach(function(delegate) {
-            if(delegate.delegateEmpId == empId) {
-                matchingDelegates.push(delegate)
-            }
-            
-        }, this);
-
+    setDelegates(peeps) {
         this.setState({
-            delegates: matchingDelegates
+            delegates: peeps
         });
     }
 
@@ -45,11 +44,3 @@ export class SearchableDelegateTable extends Component {
         );
     }
 }
-
-const delegateInfo = [
-    {'empId': 100, 'applicationKey': '123456', delegateEmpId: 100},
-    {'empId': 115, 'applicationKey': '789065', delegateEmpId: 100},
-    {'empId': 100024, 'applicationKey': '356788', delegateEmpId: 115},
-    {'empId': 100044, 'applicationKey': '235346', delegateEmpId: 100},
-    {'empId': 100011, 'applicationKey': '346457', delegateEmpId: 115}
-]

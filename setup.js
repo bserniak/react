@@ -1,5 +1,9 @@
 require('babel-register')();
 const { JSDOM } = require('jsdom');
+var chai = require('chai');
+var expect = chai.expect;
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;

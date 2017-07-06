@@ -6,7 +6,7 @@ import { DelegateRow } from './delegateRow';
 
 describe('DelegateTable', () => {
     it('should render table', () => {
-        const delegateRows = [ {'empId': 100, 'applicationKey': '1234'}, {'empId': 115, 'applicationKey': '5678'} ]
+        const delegateRows = [ {'empId': 100, 'applicationKeys': ['1234']}, {'empId': 115, 'applicationKeys': ['5678']} ]
         const wrapper = shallow(<DelegateTable delegates={delegateRows}/>);
         expect(wrapper.containsAllMatchingElements([
           <table>

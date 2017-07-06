@@ -17,6 +17,7 @@
     "sinon": "^2.3.6"
   },
   "devDependencies": {
+    "chai-as-promised": "^7.1.1",
     "prop-types": "^15.5.10"
   },
   "scripts": {
