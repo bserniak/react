@@ -33,4 +33,22 @@ describe('SearchableDelegateTable', () => {
             done();
         });        
     });
+
+    it('calls set state when setDelegates is called', () => {
+        const delegates = [{'empId': 100, 'applicationKeys': ['1234']}];
+        const wrapper = shallow(<SearchableDelegateTable/>);
+
+        wrapper.instance().setDelegates(delegates);
+
+        expect(wrapper.state().delegates).to.deep.equal(delegates);
+    });
+
+    it('calls set state when handleTextInput is called', () => {
+        const empId = Math.random;
+        const wrapper = shallow(<SearchableDelegateTable/>);
+        expect(wrapper.state().empId).to.equal(100);
+        wrapper.instance().handleTextInput(empId);
+
+        expect(wrapper.state().empId).to.equal(empId);
+    });
 });
