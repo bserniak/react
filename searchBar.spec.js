@@ -5,13 +5,11 @@ import { shallow, mount } from 'enzyme';
 import { SearchBar } from './searchBar';
 
 describe('SearchBar', () => {
-    it('should render form with input and button', () => {
+    it('should render with input and button', () => {
         const wrapper = shallow(<SearchBar/>);
         expect(wrapper.containsAllMatchingElements([
-          <form>
-              <input type="text" placeholder="EmpId..." />
-              <button>Find Delegates</button>
-          </form>
+                <input type="text" placeholder="EmpId..." />,
+                <button type="button">Find Delegates</button>
         ])).to.equal(true);
     });
 

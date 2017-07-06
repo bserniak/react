@@ -17,10 +17,8 @@ export class SearchBar extends Component {
     render() {
         return (
             <div>
-                <form>
-                    <input type="text" placeholder="EmpId..." value={this.props.empId} onChange={this.handleEmpIdInputChange} />
-                    <button onClick={this.handleClick}>Find Delegates</button>
-                </form>
+                <input type="text" placeholder="EmpId..." value={this.props.empId} onChange={this.handleEmpIdInputChange} />
+                <button type="button" onClick={this.handleClick}>Find Delegates</button>
             </div>
         );
     }

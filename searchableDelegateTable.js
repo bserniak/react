@@ -14,8 +14,17 @@ export class SearchableDelegateTable extends Component {
     }
 
     getDelegatesFromApi(empId) {
+        var matchingDelegates = [];
+
+        delegateInfo.forEach(function(delegate) {
+            if(delegate.delegateEmpId == empId) {
+                matchingDelegates.push(delegate)
+            }
+            
+        }, this);
+
         this.setState({
-            delegates: delegateInfo
+            delegates: matchingDelegates
         });
     }
 
@@ -26,19 +35,21 @@ export class SearchableDelegateTable extends Component {
     }
 
     render() {
+        const delegatesForEmployee = this.state.delegates;
+        const currentEmpId = this.state.empId;
         return (
             <div>
-                <SearchBar getDelegates={this.getDelegatesFromApi} onEmpIdTextInput={this.handleTextInput} empId={this.state.empId}/>
-                <DelegateTable delegates={this.state.delegates}/>
+                <SearchBar getDelegates={this.getDelegatesFromApi} onEmpIdTextInput={this.handleTextInput} empId={currentEmpId}/>
+                <DelegateTable delegates={delegatesForEmployee}/>
             </div>
         );
     }
 }
 
-var delegateInfo = [
-    {'empId': 100, 'applicationKey': '123456'},
-    {'empId': 115, 'applicationKey': '789065'},
-    {'empId': 100024, 'applicationKey': '356788'},
-    {'empId': 100044, 'applicationKey': '235346'},
-    {'empId': 100011, 'applicationKey': '346457'}
+const delegateInfo = [
+    {'empId': 100, 'applicationKey': '123456', delegateEmpId: 100},
+    {'empId': 115, 'applicationKey': '789065', delegateEmpId: 100},
+    {'empId': 100024, 'applicationKey': '356788', delegateEmpId: 115},
+    {'empId': 100044, 'applicationKey': '235346', delegateEmpId: 100},
+    {'empId': 100011, 'applicationKey': '346457', delegateEmpId: 115}
 ]
