@@ -11,21 +11,15 @@ import {grey500} from './node_modules/material-ui/styles/colors';
 
 export class DelegateRow extends Component {
     render() {
-        var status;
-        if(this.props.status == 0) {
-            status = <IoCheckmarkCircled style={{color: green500}}/>
-        }
-        if(this.props.status == 1) {
-            status = <IoAlertCircled style={{color: yellow500}}/>
-        }
-        if(this.props.status == 2) {
-            status = <IoCloseCircled style={{color: red500}}/>
-        }
-        if(this.props.status == 3) {
-            status = <IoHelpCircled style={{color: grey500}}/>
-        }
+        var mapping = {
+            0: <IoCheckmarkCircled style={{color: green500}}/>,
+            1: <IoAlertCircled style={{color: yellow500}}/>,
+            2: <IoCloseCircled style={{color: red500}}/>,
+            3: <IoHelpCircled style={{color: grey500}}/>
+        };
+
         return (
-            <ListItem leftIcon={status} primaryText={<a href={'https://gorctrails.org'+this.props.url} style={{ color: 'inherit', textDecoration: 'none' }}>{this.props.name}</a>}/>
+            <ListItem leftIcon={mapping[this.props.status]} primaryText={<a href={'https://gorctrails.org'+this.props.url} style={{ color: 'inherit', textDecoration: 'none' }}>{this.props.name}</a>}/>
         );
     }
 }
