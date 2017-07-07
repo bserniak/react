@@ -8,22 +8,27 @@ export class SearchableDelegateTable extends Component {
         super(props);
         this.state = {
             empId: 100,
-            delegates: []
+            trails: []
         }
         this.handleTextInput = this.handleTextInput.bind(this);
         this.setDelegates = this.setDelegates.bind(this);
         this.getDelegatesFromApi = this.getDelegatesFromApi.bind(this);
     }
 
+    componentDidMount() {
+        return GetDelegates().then(trails => {
+            this.setDelegates(trails.trails);
+        });        
+    }
     getDelegatesFromApi(empId) {
-        return GetDelegates(empId).then(peeps => {
-            this.setDelegates(peeps);
+        return GetDelegates(empId).then(trails => {
+            this.setDelegates(trails.trails);
         });
     }
 
-    setDelegates(peeps) {
+    setDelegates(trails) {
         this.setState({
-            delegates: peeps
+            trails: trails
         });
     }
 
@@ -34,12 +39,10 @@ export class SearchableDelegateTable extends Component {
     }
 
     render() {
-        const delegatesForEmployee = this.state.delegates;
-        const currentEmpId = this.state.empId;
         return (
             <div>
-                <SearchBar getDelegates={this.getDelegatesFromApi} onEmpIdTextInput={this.handleTextInput} empId={currentEmpId}/>
-                <DelegateTable delegates={delegatesForEmployee}/>
+                {/*<SearchBar getDelegates={this.getDelegatesFromApi} onEmpIdTextInput={this.handleTextInput} empId={this.state.empId}/>*/}
+                <DelegateTable delegates={this.state.trails}/>
             </div>
         );
     }

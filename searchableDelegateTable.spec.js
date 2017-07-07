@@ -23,6 +23,7 @@ describe('SearchableDelegateTable', () => {
         Services.GetDelegates = delegatesStub;
         const wrapper = shallow(<SearchableDelegateTable/>);
         wrapper.instance().setDelegates = setDelegatesStub;
+        
         const result = wrapper.instance().getDelegatesFromApi(100);
         
         result.then(res => {
@@ -37,6 +38,7 @@ describe('SearchableDelegateTable', () => {
     it('calls set state when setDelegates is called', () => {
         const delegates = [{'empId': 100, 'applicationKeys': ['1234']}];
         const wrapper = shallow(<SearchableDelegateTable/>);
+        expect(wrapper.state().delegates).to.eql([]);
 
         wrapper.instance().setDelegates(delegates);
 
@@ -47,6 +49,7 @@ describe('SearchableDelegateTable', () => {
         const empId = Math.random;
         const wrapper = shallow(<SearchableDelegateTable/>);
         expect(wrapper.state().empId).to.equal(100);
+
         wrapper.instance().handleTextInput(empId);
 
         expect(wrapper.state().empId).to.equal(empId);
