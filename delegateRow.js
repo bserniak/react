@@ -25,7 +25,7 @@ export class DelegateRow extends Component {
             status = <IoHelpCircled style={{color: grey500}}/>
         }
         return (
-            <ListItem leftIcon={status} primaryText={this.props.name}/>
+            <ListItem leftIcon={status} primaryText={<a href={'https://gorctrails.org'+this.props.url} style={{ color: 'inherit', textDecoration: 'none' }}>{this.props.name}</a>}/>
         );
     }
 }
