@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import IoAlertCircled from './node_modules/react-icons/lib/io/alert-circled';
-import IoCloseCircled from './node_modules/react-icons/lib/io/close-circled';
-import IoCheckmarkCircled from './node_modules/react-icons/lib/io/checkmark-circled';
-import IoHelpCircled from './node_modules/react-icons/lib/io/help-circled';
+import IoAlertCircled from 'react-icons/lib/io/alert-circled';
+import IoCloseCircled from 'react-icons/lib/io/close-circled';
+import IoCheckmarkCircled from 'react-icons/lib/io/checkmark-circled';
+import IoHelpCircled from 'react-icons/lib/io/help-circled';
 import {ListItem} from './node_modules/material-ui/List';
 import {green500} from './node_modules/material-ui/styles/colors';
 import {red500} from './node_modules/material-ui/styles/colors';
 import {yellow500} from './node_modules/material-ui/styles/colors';
+import Paper from 'material-ui/Paper';
 
 const styles = {
   root: {
@@ -25,8 +26,10 @@ export class TrailRow extends Component {
         };
 
         return (
-            <ListItem leftIcon={mapping[this.props.status]} primaryText={<a href={'https://gorctrails.org'+this.props.url} 
-            style={{ color: '#FFFFFF', textDecoration: 'none', fontFamily: 'Roboto, sans-serif' }}>{this.props.name}</a>} style={styles.root}/>
+            <Paper style={styles.root} rounded={true} zDepth={5} >
+                <ListItem leftIcon={mapping[this.props.status]} primaryText={<a href={'https://gorctrails.org' + this.props.url} 
+                    style={{ color: '#FFFFFF', textDecoration: 'none', fontFamily: 'Roboto, sans-serif', fontWeight: 'bold' }}>{this.props.name}</a>}/>
+            </Paper>
         );
     }
 }

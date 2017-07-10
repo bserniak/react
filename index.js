@@ -16,4 +16,4 @@ const App = () => (
 ReactDOM.render(
   <App/>,
   document.querySelector('#root'));
-  document.bgColor = '#607D8B'
+  document.bgColor = '#B0BEC5'
