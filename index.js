@@ -6,11 +6,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 const App = () => (
-  <div>
-  <MuiThemeProvider>
-    <SearchableTrailTable />
-  </MuiThemeProvider>
-  </div>
+    <MuiThemeProvider>
+      <SearchableTrailTable />
+    </MuiThemeProvider>
 );
 
 ReactDOM.render(
