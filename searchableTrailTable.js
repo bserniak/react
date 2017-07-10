@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { SearchBar } from './searchBar';
 import { TrailTable } from './trailTable';
 import { GetTrails } from './services';
+import AppBar from 'material-ui/AppBar'
+
+const styles = {
+  root: {
+    flexWrap: 'wrap',
+    background: '#37474F',
+  }
+};
 
 export class SearchableTrailTable extends Component {
     constructor(props) {
@@ -27,6 +35,7 @@ export class SearchableTrailTable extends Component {
     render() {
         return (
             <div>
+                <AppBar style={styles.root} showMenuIconButton={false} title="G.O.R.C. Trail Statuses" />
                 <TrailTable trails={this.state.trails}/>
             </div>
         );
