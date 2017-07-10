@@ -2,17 +2,15 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { stub, spy, match } from 'sinon';
-import { SearchableDelegateTable } from './searchableDelegateTable';
-import { SearchBar } from './searchBar';
-import { DelegateTable } from './delegateTable';
+import { SearchableTrailTable } from './searchableTrailTable';
+import { TrailTable } from './trailTable';
 import * as Services from './services';
 
-describe('SearchableDelegateTable', () => {
-    it('should render SearchBar and DelegateTable', () => {
-        const wrapper = shallow(<SearchableDelegateTable/>);
+describe('SearchableTrailTable', () => {
+    it('should render TrailTable', () => {
+        const wrapper = shallow(<SearchableTrailTable/>);
         expect(wrapper.containsAllMatchingElements([
-          <SearchBar/>,
-          <DelegateTable/>
+          <TrailTable/>
         ])).to.equal(true);
     });
 
@@ -21,7 +19,7 @@ describe('SearchableDelegateTable', () => {
         const delegatesStub = stub().resolves(response);
         const setDelegatesStub = stub();
         Services.GetDelegates = delegatesStub;
-        const wrapper = shallow(<SearchableDelegateTable/>);
+        const wrapper = shallow(<SearchableTrailTable/>);
         wrapper.instance().setDelegates = setDelegatesStub;
         
         const result = wrapper.instance().getDelegatesFromApi(100);
@@ -35,23 +33,13 @@ describe('SearchableDelegateTable', () => {
         });        
     });
 
-    it('calls set state when setDelegates is called', () => {
+    it('calls set state when setTrails is called', () => {
         const delegates = [{'empId': 100, 'applicationKeys': ['1234']}];
-        const wrapper = shallow(<SearchableDelegateTable/>);
+        const wrapper = shallow(<SearchableTrailTable/>);
         expect(wrapper.state().delegates).to.eql([]);
 
         wrapper.instance().setDelegates(delegates);
 
         expect(wrapper.state().delegates).to.deep.equal(delegates);
-    });
-
-    it('calls set state when handleTextInput is called', () => {
-        const empId = Math.random;
-        const wrapper = shallow(<SearchableDelegateTable/>);
-        expect(wrapper.state().empId).to.equal(100);
-
-        wrapper.instance().handleTextInput(empId);
-
-        expect(wrapper.state().empId).to.equal(empId);
     });
 });

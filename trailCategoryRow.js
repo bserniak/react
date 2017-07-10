@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {ListItem} from './node_modules/material-ui/List';
+import Subheader from './node_modules/material-ui/Subheader';
 import {blueGrey500} from './node_modules/material-ui/styles/colors';
-import muiThemeable from './node_modules/material-ui/styles/muiThemeable';
 
 export class TrailCategoryRow extends React.Component {
   render() {
-    return (<ListItem primaryText={this.props.area} style={{color: blueGrey500}} />);
+    return (<Subheader style={{color: '#000000', background: '#CFD8DC', fontFamily: 'Roboto, sans-serif'}}>{this.props.area}</Subheader>);
   }
 }

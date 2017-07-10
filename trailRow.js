@@ -7,19 +7,26 @@ import {ListItem} from './node_modules/material-ui/List';
 import {green500} from './node_modules/material-ui/styles/colors';
 import {red500} from './node_modules/material-ui/styles/colors';
 import {yellow500} from './node_modules/material-ui/styles/colors';
-import {grey500} from './node_modules/material-ui/styles/colors';
 
-export class DelegateRow extends Component {
+const styles = {
+  root: {
+    flexWrap: 'wrap',
+    background: '#607D8B',
+  }
+};
+
+export class TrailRow extends Component {
     render() {
         var mapping = {
-            0: <IoCheckmarkCircled style={{color: green500}}/>,
-            1: <IoAlertCircled style={{color: yellow500}}/>,
-            2: <IoCloseCircled style={{color: red500}}/>,
-            3: <IoHelpCircled style={{color: grey500}}/>
+            0: <IoCheckmarkCircled style={{color: '#76FF03'}}/>,
+            1: <IoAlertCircled style={{color: '#FFC107'}}/>,
+            2: <IoCloseCircled style={{color: '#FF5722'}}/>,
+            3: <IoHelpCircled style={{color: '#BDBDBD'}}/>
         };
 
         return (
-            <ListItem leftIcon={mapping[this.props.status]} primaryText={<a href={'https://gorctrails.org'+this.props.url} style={{ color: 'inherit', textDecoration: 'none' }}>{this.props.name}</a>}/>
+            <ListItem leftIcon={mapping[this.props.status]} primaryText={<a href={'https://gorctrails.org'+this.props.url} 
+            style={{ color: '#FFFFFF', textDecoration: 'none', fontFamily: 'Roboto, sans-serif' }}>{this.props.name}</a>} style={styles.root}/>
         );
     }
 }
