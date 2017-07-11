@@ -1,26 +1,19 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
-import { DelegateTable } from './delegateTable';
-import { DelegateRow } from './delegateRow';
+import { TrailTable } from './trailTable';
+import { TrailRow } from './trailRow';
+import { TrailCategoryRow } from './trailCategoryRow';
+import { List } from './node_modules/material-ui/List';
 
-describe('DelegateTable', () => {
+describe('TrailTable', () => {
     it('should render table', () => {
-        const delegateRows = [ {'empId': 100, 'applicationKeys': ['1234']}, {'empId': 115, 'applicationKeys': ['5678']} ]
-        const wrapper = shallow(<DelegateTable delegates={delegateRows}/>);
+        const status = Math.random();
+        const trailRows = [ {'area': 'missouri', 'name': 'bestTrailEver', 'status': status, 'url': 'url/to/detail/page'} ]
+        const wrapper = shallow(<TrailTable trails={trailRows}/>);
         expect(wrapper.containsAllMatchingElements([
-          <table>
-            <thead>
-            <tr>
-                <th>EmpId</th>
-                <th>Application Guid</th>
-            </tr>
-            </thead>
-            <tbody>
-                <DelegateRow empId={100} applicationKey='1234' />
-                <DelegateRow empId={115} applicationKey='5678' />
-            </tbody>
-        </table>
+                    <TrailCategoryRow area='missouri' key='missouri' />,
+                    <TrailRow key='bestTrailEver' name='bestTrailEver' status={status} url='url/to/detail/page' />
         ])).to.equal(true);
     });
 });

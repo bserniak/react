@@ -15,31 +15,31 @@ describe('SearchableTrailTable', () => {
     });
 
     it('sets state from results of service', (done) => {
-        const response = [{'empId': 100, 'applicationKeys': ['1234']}];
-        const delegatesStub = stub().resolves(response);
-        const setDelegatesStub = stub();
-        Services.GetDelegates = delegatesStub;
+        const trails = [{'area': 'test', 'name': 'trail1', 'status': 1, 'url': 'url'}];
+        const response = {'trails': trails};
+        const trailsStub = stub().resolves(response);
+        const setTrailsStub = stub();
+        Services.GetTrails = trailsStub;
         const wrapper = shallow(<SearchableTrailTable/>);
-        wrapper.instance().setDelegates = setDelegatesStub;
+        wrapper.instance().setTrails = setTrailsStub;
         
-        const result = wrapper.instance().getDelegatesFromApi(100);
+        const result = wrapper.instance().componentDidMount();
         
         result.then(res => {
-            expect(delegatesStub.calledOnce).to.equal(true);
-            expect(delegatesStub.calledWith(100)).to.equal(true);
-            expect(setDelegatesStub.calledOnce).to.equal(true);
-            expect(setDelegatesStub.calledWith(match.array.deepEquals(response))).to.equal(true);
+            expect(trailsStub.calledOnce).to.equal(true);
+            expect(setTrailsStub.calledOnce).to.equal(true);
+            expect(setTrailsStub.calledWith(match.array.deepEquals(trails))).to.equal(true);
             done();
         });        
     });
 
     it('calls set state when setTrails is called', () => {
-        const delegates = [{'empId': 100, 'applicationKeys': ['1234']}];
+        const trails = [{'area': 'test', 'name': 'trail1', 'status': 1, 'url': 'url'}];
         const wrapper = shallow(<SearchableTrailTable/>);
-        expect(wrapper.state().delegates).to.eql([]);
+        expect(wrapper.state().trails).to.eql([]);
 
-        wrapper.instance().setDelegates(delegates);
+        wrapper.instance().setTrails(trails);
 
-        expect(wrapper.state().delegates).to.deep.equal(delegates);
+        expect(wrapper.state().trails).to.deep.equal(trails);
     });
 });

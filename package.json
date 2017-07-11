@@ -22,7 +22,7 @@
     "prop-types": "^15.5.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --watch --require setup.js *.spec.js"
   },
   "author": "",
   "license": "ISC"
