@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SearchBar } from './searchBar';
 import { TrailTable } from './trailTable';
 import { GetTrails } from './services';
 import AppBar from 'material-ui/AppBar'
