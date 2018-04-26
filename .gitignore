@@ -13,10 +13,6 @@ npm-debug.log*
 
 *.js.map
 *.jsx.map
-src/**/*.js
-uat/**/*.js
-uat/**/*.jsx
-src/**/*.jsx
 *.tar.gz
 /jest_0
 
