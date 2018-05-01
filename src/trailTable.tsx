@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-import { TrailRow } from './trailRow';
-import { TrailCategoryRow } from './trailCategoryRow';
-import {List} from './node_modules/material-ui/List';
+import * as React from "react";
+import { TrailRow } from "./trailRow";
+import { TrailCategoryRow } from "./trailCategoryRow";
 
-const styles = {
-  root: {
-    flexWrap: 'wrap',
-    background: '#607D8B'
-  }
-};
+interface TrailTableProps {
+    trails: 
+}
 
-export class TrailTable extends Component {
+export class TrailTable extends React.Component<TrailTableProps, {}> {
     render() {
-        var rows = [];
-        var lastArea = null;
+        let rows = [];
+        let lastArea = null;
         this.props.trails.forEach(function(trail) {
             if (trail.area !== lastArea) {
                 rows.push(<TrailCategoryRow area={trail.area} key={trail.area} />);
