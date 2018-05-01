@@ -1,4 +1,3 @@
-import * as randomstring from "randomstring";
 import * as _ from "lodash";
 import { ShallowWrapper } from "enzyme";
 
@@ -58,11 +57,6 @@ const randomInteger = (min: number, max: number): number => {
 };
 
 const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
-const randomUuid = () => {
-    const charset = "0123456789abcdef";
-    const hex = (length: number) => randomstring.generate({charset, length});
-    return `${hex(8)}-${hex(4)}-${hex(4)}-${hex(4)}-${hex(12)}`;
-};
 
 const waitForNextTick = async () => new Promise((r) => setTimeout(r, 0));
 
@@ -83,4 +77,4 @@ const makeStub = (): Stub => {
     return stub;
 };
 
-export {combinatorial, findComponentById, rewire, resetWiring, randomInteger, signalledPromise, delay, randomUuid, waitForNextTick, resizeWindow, makeStub};
+export {combinatorial, findComponentById, rewire, resetWiring, randomInteger, signalledPromise, delay, waitForNextTick, resizeWindow, makeStub};

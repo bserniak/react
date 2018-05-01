@@ -114,10 +114,6 @@ module.exports = function (env) {
                 comments: false,
                 sourceMap: !env.production
             }) : function() {},
-            new CopyWebpackPlugin([
-                { from: './config/config.js' },
-                { from: './public/images', to: "images" },
-            ], {}),
             new HtmlWebpackPlugin({
                 template: 'public/index.html',
                 configDirectory: "/",

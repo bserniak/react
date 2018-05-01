@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import { TrailTable } from './trailTable';
-import { GetTrails } from './services';
-import AppBar from 'material-ui/AppBar'
+import * as React from "react";
+import { TrailTable } from "./trailTable";
+import { GetTrails } from "./services";
 
 const styles = {
   root: {
-    flexWrap: 'wrap',
-    background: '#37474F',
+    flexWrap: "wrap",
+    background: "#37474F",
   }
 };
 
-export class SearchableTrailTable extends Component {
-    constructor(props) {
+interface SearchableTrailTableState {
+    trails: any;
+}
+
+export class SearchableTrailTable extends React.Component<{}, SearchableTrailTableState> {
+    constructor(props: {}) {
         super(props);
         this.state = {
             trails: []
@@ -25,7 +28,7 @@ export class SearchableTrailTable extends Component {
         });        
     }
 
-    setTrails(trails) {
+    setTrails(trails: any) {
         this.setState({
             trails: trails
         });
@@ -34,7 +37,7 @@ export class SearchableTrailTable extends Component {
     render() {
         return (
             <div>
-                <AppBar style={styles.root} showMenuIconButton={false} title="G.O.R.C. Trail Statuses" />
+                {/* <AppBar style={styles.root} showMenuIconButton={false} title="G.O.R.C. Trail Statuses" /> */}
                 <TrailTable trails={this.state.trails}/>
             </div>
         );
