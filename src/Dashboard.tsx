@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TrailTable } from "./trailTable";
+import TrailTable from "./TrailList";
 import { GetTrails } from "./Services";
 import * as Models from "./definitions/definitions";
 
@@ -10,11 +10,11 @@ const styles = {
   },
 };
 
-interface SearchableTrailTableState {
+interface DashboardState {
     trails: Models.Trail[];
 }
 
-export class SearchableTrailTable extends React.Component<{}, SearchableTrailTableState> {
+export default class Dashboard extends React.Component<{}, DashboardState> {
     constructor(props: {}) {
         super(props);
         this.state = {

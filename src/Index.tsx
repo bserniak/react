@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {SearchableTrailTable} from "./searchableTrailTable";
+import Dashboard from "./Dashboard";
 
 ReactDOM.render(
-  <SearchableTrailTable />,
+  <Dashboard />,
   document.querySelector("#root"));
