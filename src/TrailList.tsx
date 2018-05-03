@@ -1,12 +1,14 @@
 import * as React from "react";
 import * as Models from "./definitions/definitions";
 import * as _ from "lodash";
+import { ProviderProps, connect } from "react-redux";
+import * as Actions from "./redux/actions";
 
 interface TrailListProps {
     trails: Models.Trail[];
 }
 
-export default class TrailList extends React.Component<TrailListProps, {}> {
+class TrailListView extends React.Component<TrailListProps, {}> {
     public render() {
         return (
             <div>
@@ -16,17 +18,16 @@ export default class TrailList extends React.Component<TrailListProps, {}> {
     }
 
     private renderTrailsByArea = () => {
-        const byArea = _.groupBy(this.props.trails, (trail) => trail.area);
+        const byArea = _.groupBy(this.props.trails, "area");
         const areas = _.keys(byArea).map((area) => ({name: area, trails: byArea[area]}));
-        console.log({areas});
 
         const renderArea = (area: {name: string, trails: Models.Trail[]}) => {
-            const renderTrail = (trail: Models.Trail) => {
+            const renderTrail = (trail: Models.Trail, index: number) => {
                 return (
-                    <li key={trail.url}>
+                    <li key={`${index}-${trail.name}`}>
                         <a href={`https://gorctrails.org${trail.url}`}>
-                            <span>{trail.status}</span>
-                            <span>{trail.name}</span>
+                            <div>{trail.status}</div>
+                            <div>{trail.name}</div>
                         </a>
                     </li>
                 );
@@ -34,9 +35,9 @@ export default class TrailList extends React.Component<TrailListProps, {}> {
 
             return (
                 <li key={area.name}>
-                    <span>{area.name}</span>
+                    <div>{area.name}</div>
                     <ul>
-                        {area.trails.map((trail) => renderTrail(trail))}
+                        {area.trails.map((trail, index) => renderTrail(trail, index))}
                     </ul>
                 </li>
             );
@@ -47,3 +48,48 @@ export default class TrailList extends React.Component<TrailListProps, {}> {
         );
     }
 }
+
+export interface ContentLoaderOptions<TPropsFromState, TOwnProps> {
+    loadingAction(props: Partial<TPropsFromState & TOwnProps>): any;
+    isLoaded(props: Partial<TPropsFromState & TOwnProps>): boolean;
+    mapStateToProps(state: Models.TrailAppState): TPropsFromState;
+}
+
+type MyComponent<T> = React.StatelessComponent<T>|React.ComponentClass<T>;
+
+const ContentLoader = <TPropsFromState extends {}, TOwnProps extends {}>(options: ContentLoaderOptions<TPropsFromState, TOwnProps>) =>
+    (ContentView: MyComponent<TOwnProps&TPropsFromState>) => {
+    return connect<TPropsFromState, { }, ProviderProps & TOwnProps>((state: Models.TrailAppState) => (options.mapStateToProps(state)))
+    (class ContentLoaderHOC extends React.Component<TPropsFromState & TOwnProps & Models.DispatchEnabled, {}> {
+        public componentDidMount() {
+            if (!options.isLoaded(this.props)) {
+                this.props.dispatch(options.loadingAction(this.props));
+            }
+        }
+
+        public render() {
+            if (!options.isLoaded(this.props)) {
+                return <div>Loading...</div>;
+            }
+            return <ContentView {...this.props} />;
+        }
+    });
+};
+
+const mapStateToProps = (state: Models.TrailAppState): TrailListProps => {
+    return {
+        trails: state.trails,
+    };
+};
+
+const TrailLoader = ContentLoader<TrailListProps, TrailListProps>({
+    loadingAction: () => {
+        return Actions.getTrails();
+    },
+    isLoaded: (props: TrailListProps) => {
+        return !!props.trails;
+    },
+    mapStateToProps,
+})(TrailListView);
+
+export default connect<TrailListProps, {}, ProviderProps>(mapStateToProps)(TrailLoader);

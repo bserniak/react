@@ -1,7 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Dashboard from "./Dashboard";
+import store from "./redux/store";
+import {Provider} from "react-redux";
+import DashboardBase from "./Dashboard";
 
-ReactDOM.render(
-  <Dashboard />,
-  document.querySelector("#root"));
+ReactDOM.hydrate((
+  <Provider store={store}>
+    <DashboardBase />
+</Provider>
+), document.querySelector("#root"));
