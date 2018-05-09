@@ -2,22 +2,13 @@ import * as React from "react";
 import TrailTable from "./TrailList";
 import * as Models from "./definitions/definitions";
 
-interface DashboardState {
-    trails: Models.Trail[];
-}
-
-export default class DashboardBase extends React.Component<{}, DashboardState> {
-    public render() {
+const DashboardBase = () => {
         return (
-            <div>
-                <div>G.O.R.C. Trail Statuses</div>
+            <div id="dashboard">
+                <h1>G.O.R.C. Trail Statuses</h1>
                 <TrailTable />
             </div>
         );
-    }
+};
 
-
-    private setTrails(trails: Models.Trail[]) {
-        this.setState({ trails });
-    }
-}
+export default DashboardBase;

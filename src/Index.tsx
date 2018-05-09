@@ -4,7 +4,7 @@ import store from "./redux/store";
 import {Provider} from "react-redux";
 import DashboardBase from "./Dashboard";
 
-ReactDOM.hydrate((
+ReactDOM.render((
   <Provider store={store}>
     <DashboardBase />
 </Provider>

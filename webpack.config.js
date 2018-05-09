@@ -17,8 +17,7 @@ module.exports = function (env) {
         ],
         output: {
             path: path.resolve(__dirname, './dist'),
-            filename: 'bundle.[hash].js',
-            publicPath: env.development ? "/" : "/meeting/",
+            filename: 'bundle.js',
         },
         resolve: {
             extensions: ['.ts', '.tsx', '.web.js', '.js', '.json', '.web.jsx', '.jsx', '.scss', '.css'],
@@ -114,6 +113,9 @@ module.exports = function (env) {
                 comments: false,
                 sourceMap: !env.production
             }) : function() {},
+            new CopyWebpackPlugin([
+                { from: './public/icons', to: "icons" },
+            ], {}),
             new HtmlWebpackPlugin({
                 template: 'public/index.html',
                 configDirectory: "/",

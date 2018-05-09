@@ -11,9 +11,9 @@ interface TrailListProps {
 class TrailListView extends React.Component<TrailListProps, {}> {
     public render() {
         return (
-            <div>
+            <React.Fragment>
                 {this.renderTrailsByArea()}
-            </div>
+            </React.Fragment>
         );
     }
 
@@ -26,8 +26,8 @@ class TrailListView extends React.Component<TrailListProps, {}> {
                 return (
                     <li key={`${index}-${trail.name}`}>
                         <a href={`https://gorctrails.org${trail.url}`}>
-                            <div>{trail.status}</div>
-                            <div>{trail.name}</div>
+                            <div id={`trailStatus-${index}`}>{trail.status}</div>
+                            <div id={`trailName-${index}`}>{trail.name}</div>
                         </a>
                     </li>
                 );
@@ -35,7 +35,7 @@ class TrailListView extends React.Component<TrailListProps, {}> {
 
             return (
                 <li key={area.name}>
-                    <div>{area.name}</div>
+                    <div id={`area-${area.name}`}>{area.name}</div>
                     <ul>
                         {area.trails.map((trail, index) => renderTrail(trail, index))}
                     </ul>
@@ -69,7 +69,7 @@ const ContentLoader = <TPropsFromState extends {}, TOwnProps extends {}>(options
 
         public render() {
             if (!options.isLoaded(this.props)) {
-                return <div>Loading...</div>;
+                return <span id={"loading"}>Loading...</span>;
             }
             return <ContentView {...this.props} />;
         }
@@ -82,7 +82,7 @@ const mapStateToProps = (state: Models.TrailAppState): TrailListProps => {
     };
 };
 
-const TrailLoader = ContentLoader<TrailListProps, TrailListProps>({
+const TrailLoader = ContentLoader<TrailListProps, {}>({
     loadingAction: () => {
         return Actions.getTrails();
     },
@@ -92,4 +92,4 @@ const TrailLoader = ContentLoader<TrailListProps, TrailListProps>({
     mapStateToProps,
 })(TrailListView);
 
-export default connect<TrailListProps, {}, ProviderProps>(mapStateToProps)(TrailLoader);
+export default TrailLoader;
