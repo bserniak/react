@@ -3,6 +3,7 @@ import * as Models from "./definitions/definitions";
 import * as _ from "lodash";
 import { ProviderProps, connect } from "react-redux";
 import * as Actions from "./redux/actions";
+import styles from "./TrailList.scss";
 
 interface TrailListProps {
     trails: Models.Trail[];
