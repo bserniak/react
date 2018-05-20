@@ -1,8 +1,8 @@
 import * as React from "react";
-import * as Models from "./definitions/definitions";
+import * as Models from "../definitions/definitions";
 import * as _ from "lodash";
 import { ProviderProps, connect } from "react-redux";
-import * as Actions from "./redux/actions";
+import * as Actions from "../redux/actions";
 import styles from "./TrailList.scss";
 
 interface TrailListProps {

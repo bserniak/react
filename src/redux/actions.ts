@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import * as Models from "../definitions/definitions";
-import trailService from "../trailService";
+import trailService from "../services/trailService";
 import * as actionTypes from "./actionTypes";
 
 export const getTrails = () => {

@@ -1,4 +1,4 @@
-import * as Models from "./definitions/definitions";
+import * as Models from "../definitions/definitions";
 import * as _ from "lodash";
 
 const service = {

@@ -2,10 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import store from "./redux/store";
 import {Provider} from "react-redux";
-import DashboardBase from "./Dashboard";
+import Dashboard from "./components/Dashboard";
 
 ReactDOM.render((
   <Provider store={store}>
-    <DashboardBase />
-</Provider>
+    <Dashboard />
+  </Provider>
 ), document.querySelector("#root"));

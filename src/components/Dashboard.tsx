@@ -1,8 +1,8 @@
 import * as React from "react";
-import "./scss/Semantic.css";
+import "../scss/Semantic.css";
 import styles from "./Dashboard.scss";
 import TrailTable from "./TrailList";
-import * as Models from "./definitions/definitions";
+import * as Models from "../definitions/definitions";
 
 const DashboardBase = () => {
         return (
