@@ -18,4 +18,5 @@
     "files.trimTrailingWhitespace": true,
     "typescript.referencesCodeLens.enabled": true,
     "editor.detectIndentation": false,
+    "workbench.editor.enablePreview": false,
 }

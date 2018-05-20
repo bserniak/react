@@ -1,0 +1,50 @@
+@import "../../scss/helpers/functions";
+
+/// Colors
+$colors: (
+    gray: (
+        200: #30353C,
+        100: #243238,
+        000: #FAFAF9,
+    ),
+    gold: (
+        000: #FFB619,
+    ),
+    green: (
+        000: #48A932,
+    ),
+);
+
+@function color($color: grey, $value: 000) {
+    @return map-get(map-get($colors, $color), $value); // ex: color(grey, 900)
+}
+
+/// Fonts
+$fontFamilies: (
+    robotoSlab: (
+        regular: ("RobotoSlab Regular", sans-serif),
+        thin: ("RobotoSlab Thin", sans-serif),
+        light: ("RobotoSlab Light", sans-serif),
+        bold: ("RobotoSlab Bold", sans-serif),
+    )
+);
+
+@function fontFamily($family: roboto, $weight: regular) {
+    @return map-get(map-get($fontFamilies, $family), $weight); // ex: fontFamily(robotoSlab, regular)
+}
+
+/// Easing
+$ease-duration-base: 0.3s;
+
+//Animations
+$animationDuration: 300ms;
+$lowerBoundOpacity: 0.01;
+$custom-easing: cubic-bezier(1, .1, 0, 0.9);
+/// Exports
+:export {
+    gray200: color(gray, 200);
+    gray100: color(gray, 100);
+    gray000: color(gray, 000);
+    gold400: color(gold, 000);
+    green000: color(green, 000);
+}

@@ -1,7 +1,26 @@
+@import "./scss/helpers/variables";
+
+html {
+    background-color: color(gray, 000);
+    height: 100%;
+}
+
+body {
+    background-color: color(gray, 000);
+    font-family: fontFamily(robotoSlab, regular);
+    font-size: rem-calc(16px);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+}
+
 .pageContainerInner {
     display: flex;
     height: 100%;
     width: 100%;
     flex-direction: column;
-    background-color: #FAFAF9;
+    background-color: color(gray, 000);
+    font-family: fontFamily(robotoSlab, bold);
+    font-size: rem-calc(10px);
 }
+
