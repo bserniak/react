@@ -1,18 +1,26 @@
 @import "../scss/helpers/variables";
 
 html {
-    background-color: color(gray, 000);
+    background-color: color(gray, 200);
     height: 100%;
 }
 
 body {
-    background-color: color(gray, 000);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: rem-calc(16px);
+    background-color: color(gray, 200);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     height: 100%;
+}
+
+.header {
+    text-align: center;
+    font-size: rem-calc(30px);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: color(gray, 000);
+    border-bottom: 2px solid color(gold, 000);
+    letter-spacing: rem-calc(2px);
+    width: 100%;
 }
 
 .pageContainerInner {
@@ -20,7 +28,7 @@ body {
     height: 100%;
     width: 100%;
     flex-direction: column;
-    background-color: color(gray, 000);
+    background-color: color(gray, 200);
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: rem-calc(10px);

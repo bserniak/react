@@ -36,7 +36,7 @@ class TrailListView extends React.Component<TrailListProps, {}> {
 
             return (
                 <li key={area.name} className={styles.area}>
-                    <div id={`area-${area.name}`}>{area.name}</div>
+                    <div id={`area-${area.name}`} className={styles.areaName}>{area.name}</div>
                     <ul className={styles.trails}>
                         {area.trails.map((trail, index) => renderTrail(trail, index))}
                     </ul>

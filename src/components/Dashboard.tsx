@@ -7,7 +7,9 @@ import * as Models from "../definitions/definitions";
 const DashboardBase = () => {
         return (
             <main className={styles.pageContainerInner}>
-                <h1>G.O.R.C. Trail Statuses</h1>
+                <div className={styles.header}>
+                    <span>G.O.R.C. Trail Statuses</span>
+                </div>
                 <TrailTable />
             </main>
         );
