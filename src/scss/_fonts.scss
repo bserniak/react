@@ -1,8 +1,0 @@
-@import "../helpers/mixins";
-
-$font-path: "./global/font-files";
-
-@include font-face('robotoslab-light', 'RobotoSlab Light', $font-path, 'normal', 'normal');
-@include font-face('robotoslab-bold', 'RobotoSlab Bold', $font-path, 'normal', 'normal');
-@include font-face('robotoslab-regular', 'RobotoSlab Regular', $font-path, 'normal', 'normal');
-@include font-face('robotoslab-thin', 'RobotoSlab Thin', $font-path, 'normal', 'normal');

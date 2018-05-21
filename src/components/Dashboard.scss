@@ -7,7 +7,8 @@ html {
 
 body {
     background-color: color(gray, 000);
-    font-family: fontFamily(robotoSlab, regular);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     font-size: rem-calc(16px);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -20,7 +21,8 @@ body {
     width: 100%;
     flex-direction: column;
     background-color: color(gray, 000);
-    font-family: fontFamily(robotoSlab, bold);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
     font-size: rem-calc(10px);
 }
 

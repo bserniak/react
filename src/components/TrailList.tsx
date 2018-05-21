@@ -25,19 +25,19 @@ class TrailListView extends React.Component<TrailListProps, {}> {
         const renderArea = (area: {name: string, trails: Models.Trail[]}) => {
             const renderTrail = (trail: Models.Trail, index: number) => {
                 return (
-                    <li key={`${index}-${trail.name}`}>
-                        <a href={`https://gorctrails.org${trail.url}`}>
+                    <li key={`${index}-${trail.name}`} className={styles.trail}>
+                        <a href={`https://gorctrails.org${trail.url}`} className={styles.trailLink}>
                             <div id={`trailStatus-${index}`}>{trail.status}</div>
-                            <div id={`trailName-${index}`}>{trail.name}</div>
+                            <div id={`trailName-${index}`} className={styles.trailName}>{trail.name}</div>
                         </a>
                     </li>
                 );
             };
 
             return (
-                <li key={area.name}>
+                <li key={area.name} className={styles.area}>
                     <div id={`area-${area.name}`}>{area.name}</div>
-                    <ul>
+                    <ul className={styles.trails}>
                         {area.trails.map((trail, index) => renderTrail(trail, index))}
                     </ul>
                 </li>
@@ -45,7 +45,7 @@ class TrailListView extends React.Component<TrailListProps, {}> {
         };
 
         return (
-            <ul>{areas.map((area) => renderArea(area))}</ul>
+            <ul className={styles.areas}>{areas.map((area) => renderArea(area))}</ul>
         );
     }
 }

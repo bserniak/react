@@ -3,6 +3,7 @@
 /// Colors
 $colors: (
     gray: (
+        300: #1A1A19,
         200: #30353C,
         100: #243238,
         000: #FAFAF9,
@@ -19,20 +20,6 @@ $colors: (
     @return map-get(map-get($colors, $color), $value); // ex: color(grey, 900)
 }
 
-/// Fonts
-$fontFamilies: (
-    robotoSlab: (
-        regular: ("RobotoSlab Regular", sans-serif),
-        thin: ("RobotoSlab Thin", sans-serif),
-        light: ("RobotoSlab Light", sans-serif),
-        bold: ("RobotoSlab Bold", sans-serif),
-    )
-);
-
-@function fontFamily($family: roboto, $weight: regular) {
-    @return map-get(map-get($fontFamilies, $family), $weight); // ex: fontFamily(robotoSlab, regular)
-}
-
 /// Easing
 $ease-duration-base: 0.3s;
 
@@ -42,6 +29,7 @@ $lowerBoundOpacity: 0.01;
 $custom-easing: cubic-bezier(1, .1, 0, 0.9);
 /// Exports
 :export {
+    gray300: color(gray, 300);
     gray200: color(gray, 200);
     gray100: color(gray, 100);
     gray000: color(gray, 000);

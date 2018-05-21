@@ -1,0 +1,43 @@
+@import "../scss/helpers/variables";
+
+.trails, .areas {
+    -webkit-padding-start: 0;
+}
+
+.trail {
+    font-size: rem-calc(12px);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    -webkit-padding-start: 0;
+
+    a {
+        text-decoration: none;
+        color: color(gray, 300);
+    }
+
+    & + .trail {
+        margin-top: rem-calc(4px);
+    }
+
+    .trailLink {
+        display: flex;
+        padding: 1rem 1rem 1rem 1rem;
+    }
+
+    .trailName {
+        margin-left: 2rem;
+    }
+}
+
+.area {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: rem-calc(8px);
+    font-size: rem-calc(16px);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
