@@ -70,7 +70,7 @@ const ContentLoader = <TPropsFromState extends {}, TOwnProps extends {}>(options
 
         public render() {
             if (!options.isLoaded(this.props)) {
-                return <span id={"loading"}>Loading...</span>;
+                return <span className={styles.loading}>Loading...</span>;
             }
             return <ContentView {...this.props} />;
         }
