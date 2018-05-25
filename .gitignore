@@ -1,0 +1,30 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# production
+/dist
+
+# misc
+.DS_Store
+
+npm-debug.log*
+
+*.js.map
+*.jsx.map
+*.tar.gz
+/jest_0
+
+junit.xml
+
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/markdown-navigator
+.idea/markdown-navigator.xml
+.idea/markdown-exported-files.xml
+.idea/codeStyles/*
+.idea/inspectionProfiles/profiles_settings.xml
+
+

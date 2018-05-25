@@ -1,0 +1,29 @@
+@import "../../scss/helpers/variables";
+
+/// Font Face
+@mixin font-face($filename, $family: $font-family, $path:$static-font-path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: '#{$family}';
+    src: url('#{$path}/#{$filename}.eot');
+    src: url('#{$path}/#{$filename}.woff') format('woff'),
+    url('#{$path}/#{$filename}.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+/// Animation
+@mixin animation($name, $duration: 0.3s, $iterations: infinite, $timing-function: ease, $delay: 0s) {
+  animation: $name $duration $iterations $timing-function $delay;
+}
+
+@mixin transition($name: all, $duration: 0.3s, $timing-function: ease, $delay: 0s) {
+  transform: translateZ(0);
+  transition: $name $duration $timing-function $delay;
+}
+
+/// Box Shadow
+
+@mixin drop-shadow($x-pos: 0, $y-pos: 2px, $blur: 4px, $spread: 0, $color: black, $opacity: 0.2) {
+  box-shadow: $x-pos $y-pos $blur $spread rgba($color, $opacity);
+}

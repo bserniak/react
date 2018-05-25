@@ -1,0 +1,60 @@
+@import "../scss/helpers/variables";
+
+.loading {
+    width: 100%;
+    height: 100%;
+    color: color(gray, 000);
+    font-size: rem-calc(48px);
+}
+
+.trails, .areas {
+    padding: 0;
+}
+
+.trail {
+    font-size: rem-calc(12px);
+    font-family: 'Raleway', sans-serif;
+    font-size: rem-calc(16px);
+    margin: 0;
+    padding: rem-calc(4px);
+    background-color: color(gray, 000);
+    list-style-type: none;
+    -webkit-padding-start: 0;
+    border-radius: rem-calc(8px);
+
+    a {
+        text-decoration: none;
+        color: color(gray, 300);
+    }
+
+    & + .trail {
+        margin-top: rem-calc(4px);
+    }
+
+    .trailLink {
+        display: flex;
+        padding: 1rem 1rem 1rem 1rem;
+    }
+
+    .trailName {
+        margin-left: 2rem;
+    }
+}
+
+.area {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: rem-calc(8px);
+    font-size: rem-calc(20px);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    background-color: color(green, 000);
+    color: color(grey, 000);
+    padding: rem-calc(16px);
+    border-radius: rem-calc(4px);
+
+    .areaName {
+        margin-bottom: rem-calc(8px);
+    }
+}

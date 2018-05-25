@@ -1,0 +1,25 @@
+{
+    "extends": ["tslint:recommended", "tslint-react"],
+    "rules": {
+      "max-line-length": false,
+      "ordered-imports": false,
+      "interface-name": false,
+      "max-classes-per-file": false,
+      "no-console": false,
+      "object-literal-sort-keys": false,
+      "no-var-requires": false,
+      "no-empty-interface": false,
+      "no-consecutive-blank-lines": false,
+      "no-trailing-whitespace": false,
+      "no-empty": false,
+      "comment-format": false,
+      "no-bitwise": false,
+      "no-unused-expression": false,
+      "jsx-no-multiline-js": false,
+      "member-ordering": [true,
+        "public-before-private",
+        "static-before-instance"
+      ]
+    }
+  }
+  

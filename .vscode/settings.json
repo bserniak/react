@@ -1,0 +1,22 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        // include the defaults from VS Code
+        "**/.git": true,
+        "**/.DS_Store": true,
+
+        // exclude .js and .js.map files, when in a TypeScript project
+        "**/*.js": { "when": "$(basename).ts"},
+        "**/*.jsx": { "when": "$(basename).tsx"},
+        "**/*.js.map": true,
+        "**/*.jsx.map": true
+    },
+    "editor.minimap.enabled": false,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "tslint.exclude": "**/uat/**/*.ts",
+    "autoimport.doubleQuotes": true,
+    "files.trimTrailingWhitespace": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "editor.detectIndentation": false,
+    "workbench.editor.enablePreview": false,
+}
