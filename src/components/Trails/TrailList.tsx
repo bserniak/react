@@ -1,13 +1,13 @@
+import * as _ from "lodash";
 import * as React from "react";
 import * as Models from "../../definitions/definitions";
-import * as _ from "lodash";
-import { ProviderProps, connect } from "react-redux";
 import * as Actions from "../../redux/actions";
-import styles from "./TrailList.scss";
-import IconOpen from "../icons/IconOpen";
-import IconWarning from "../icons/IconWarning";
 import IconClosed from "../icons/IconClosed";
+import IconOpen from "../icons/IconOpen";
 import IconUnknown from "../icons/IconUnknown";
+import IconWarning from "../icons/IconWarning";
+import styles from "./TrailList.scss";
+import ContentLoader from "../ContentLoader/ContentLoader";
 
 interface TrailListProps {
     trails: Models.Trail[];
@@ -54,7 +54,6 @@ class TrailListView extends React.Component<TrailListProps, {}> {
     }
 }
 
-
 const TrailStatus = (props: {status: number}) => {
 
     if (props.status === 0) {
@@ -76,33 +75,6 @@ const TrailStatus = (props: {status: number}) => {
     return (
         <IconUnknown />
     );
-};
-
-export interface ContentLoaderOptions<TPropsFromState, TOwnProps> {
-    loadingAction(props: Partial<TPropsFromState & TOwnProps>): any;
-    isLoaded(props: Partial<TPropsFromState & TOwnProps>): boolean;
-    mapStateToProps(state: Models.TrailAppState): TPropsFromState;
-}
-
-type MyComponent<T> = React.StatelessComponent<T>|React.ComponentClass<T>;
-
-const ContentLoader = <TPropsFromState extends {}, TOwnProps extends {}>(options: ContentLoaderOptions<TPropsFromState, TOwnProps>) =>
-    (ContentView: MyComponent<TOwnProps&TPropsFromState>) => {
-    return connect<TPropsFromState, { }, ProviderProps & TOwnProps>((state: Models.TrailAppState) => (options.mapStateToProps(state)))
-    (class ContentLoaderHOC extends React.Component<TPropsFromState & TOwnProps & Models.DispatchEnabled, {}> {
-        public componentDidMount() {
-            if (!options.isLoaded(this.props)) {
-                this.props.dispatch(options.loadingAction(this.props));
-            }
-        }
-
-        public render() {
-            if (!options.isLoaded(this.props)) {
-                return <span className={styles.loading}>Loading...</span>;
-            }
-            return <ContentView {...this.props} />;
-        }
-    });
 };
 
 const mapStateToProps = (state: Models.TrailAppState): TrailListProps => {
