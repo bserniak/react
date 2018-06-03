@@ -1,13 +1,13 @@
 import * as React from "react";
-import * as Models from "../definitions/definitions";
+import * as Models from "../../definitions/definitions";
 import * as _ from "lodash";
 import { ProviderProps, connect } from "react-redux";
-import * as Actions from "../redux/actions";
+import * as Actions from "../../redux/actions";
 import styles from "./TrailList.scss";
-import IconOpen from "./icons/IconOpen";
-import IconWarning from "./icons/IconWarning";
-import IconClosed from "./icons/IconClosed";
-import IconUnknown from "./icons/IconUnknown";
+import IconOpen from "../icons/IconOpen";
+import IconWarning from "../icons/IconWarning";
+import IconClosed from "../icons/IconClosed";
+import IconUnknown from "../icons/IconUnknown";
 
 interface TrailListProps {
     trails: Models.Trail[];
