@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ProviderProps, connect } from "react-redux";
 import * as Models from "../../definitions/definitions";
-import styles from "./TrailList.scss";
+import styles from "./ContentLoader.scss";
 
 type MyComponent<T> = React.StatelessComponent<T>|React.ComponentClass<T>;
 

@@ -9,11 +9,11 @@ import IconWarning from "../icons/IconWarning";
 import styles from "./TrailList.scss";
 import ContentLoader from "../ContentLoader/ContentLoader";
 
-interface TrailListProps {
+export interface TrailListProps {
     trails: Models.Trail[];
 }
 
-class TrailListView extends React.Component<TrailListProps, {}> {
+export class TrailListView extends React.Component<TrailListProps, {}> {
     public render() {
         return (
             <React.Fragment>
@@ -29,18 +29,18 @@ class TrailListView extends React.Component<TrailListProps, {}> {
         const renderArea = (area: {name: string, trails: Models.Trail[]}) => {
             const renderTrail = (trail: Models.Trail, index: number) => {
                 return (
-                    <li key={`${index}-${trail.name}`} className={styles.trail}>
+                    <li id={trail.name} key={trail.name} className={styles.trail}>
                         <a href={`https://gorctrails.org${trail.url}`} className={styles.trailLink}>
                             <TrailStatus status={trail.status} />
-                            <div id={`trailName-${index}`} className={styles.trailName}>{trail.name}</div>
+                            <div id="trailName" className={styles.trailName}>{trail.name}</div>
                         </a>
                     </li>
                 );
             };
 
             return (
-                <li key={area.name} className={styles.area}>
-                    <div id={`area-${area.name}`} className={styles.areaName}>{area.name}</div>
+                <li id={area.name} key={area.name} className={styles.area}>
+                    <div id={`area_${area.name}`} className={styles.areaName}>{area.name}</div>
                     <ul className={styles.trails}>
                         {area.trails.map((trail, index) => renderTrail(trail, index))}
                     </ul>
@@ -54,7 +54,7 @@ class TrailListView extends React.Component<TrailListProps, {}> {
     }
 }
 
-const TrailStatus = (props: {status: number}) => {
+export const TrailStatus = (props: {status: number}) => {
 
     if (props.status === 0) {
         return (
