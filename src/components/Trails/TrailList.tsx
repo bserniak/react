@@ -1,9 +1,13 @@
 import * as React from "react";
-import * as Models from "../definitions/definitions";
+import * as Models from "../../definitions/definitions";
 import * as _ from "lodash";
 import { ProviderProps, connect } from "react-redux";
-import * as Actions from "../redux/actions";
+import * as Actions from "../../redux/actions";
 import styles from "./TrailList.scss";
+import IconOpen from "../icons/IconOpen";
+import IconWarning from "../icons/IconWarning";
+import IconClosed from "../icons/IconClosed";
+import IconUnknown from "../icons/IconUnknown";
 
 interface TrailListProps {
     trails: Models.Trail[];
@@ -27,7 +31,7 @@ class TrailListView extends React.Component<TrailListProps, {}> {
                 return (
                     <li key={`${index}-${trail.name}`} className={styles.trail}>
                         <a href={`https://gorctrails.org${trail.url}`} className={styles.trailLink}>
-                            <div id={`trailStatus-${index}`}>{trail.status}</div>
+                            <TrailStatus status={trail.status} />
                             <div id={`trailName-${index}`} className={styles.trailName}>{trail.name}</div>
                         </a>
                     </li>
@@ -49,6 +53,30 @@ class TrailListView extends React.Component<TrailListProps, {}> {
         );
     }
 }
+
+
+const TrailStatus = (props: {status: number}) => {
+
+    if (props.status === 0) {
+        return (
+            <IconOpen />
+        );
+    }
+    if (props.status === 1) {
+        return (
+            <IconWarning />
+        );
+    }
+    if (props.status === 2) {
+        return (
+            <IconClosed />
+        );
+    }
+
+    return (
+        <IconUnknown />
+    );
+};
 
 export interface ContentLoaderOptions<TPropsFromState, TOwnProps> {
     loadingAction(props: Partial<TPropsFromState & TOwnProps>): any;
